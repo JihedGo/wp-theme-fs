@@ -10,3 +10,17 @@
 </head>
 
 <body>
+    <header>
+        <div class="container">
+            <?php wp_nav_menu(
+                array(
+                    'theme-location' => 'top-bar',
+                    'menu_class' => 'top-bar'
+                )
+                /*   array(
+                    'menu' => 'Top Menu',
+                    'menu_class' => 'top-bar'
+                )*/
+            ); ?>
+        </div>
+    </header>
