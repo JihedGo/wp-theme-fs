@@ -63,6 +63,12 @@ header .top-bar li .sub-menu a {
     text-decoration: none;
 }
 
+.widget {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 header .top-bar .sub-menu li .sub-menu {
     left: 100%;
     top: 0;
