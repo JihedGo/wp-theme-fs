@@ -8,3 +8,20 @@ and go to front-page.php and implement this snippet code:
  <?php the_search_query(); ?> in search.php
 
 search everything => 
+custom post types
+go to functions.php:
+function my_first_post_type(){
+    $args = array(
+        /*'labels'=>array(
+            'name'=>'Cars',
+            'singular_name'=>'Car'
+        ),*/
+        'hierarchical'=>true // same with posts
+        'public' => true,
+        'has_archive' => true,
+        'supports'=> array('title','editor', 'thumbnail'),
+        //'rewrite'=>array('slug'=>'cars'),
+    );
+    register_post_type('cars', $args);
+}
+add_action('init','my_first_post_type');

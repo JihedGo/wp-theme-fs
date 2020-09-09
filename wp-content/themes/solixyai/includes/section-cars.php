@@ -1,11 +1,8 @@
 <?php
 if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <?= get_the_date('d-m-Y H:i'); ?>
+
         <?php the_content(); ?>
-        <?php $fname = get_the_author_meta('first_name');
-        $lname = get_the_author_meta('last_name');
-        ?>
-        <p> Posted by <?= $fname . ' ' . $lname ?></p>
+
         <?php
         $tags = get_the_tags();
         if ($tags) :
@@ -22,6 +19,7 @@ if (have_posts()) : while (have_posts()) : the_post(); ?>
         foreach ($categories as $cat) : ?>
             <a href="<?= get_category_link($cat->term_id) ?>"><?= $cat->name ?></a>
         <?php endforeach; ?>
+        <?= get_the_date('d-m-Y H:i'); ?>
         <?php //comments_template(); 
         ?>
 
