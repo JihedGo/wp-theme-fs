@@ -60,7 +60,7 @@ function my_sidebars()
         array(
             'name' => 'Page Sidebar',
             'id' => 'page-sidebar',
-            'before_title' => '<h4 class="widget-title> ',
+            'before_title' => '<h4 class="widget-title"> ',
             'after_title' => '</h4>'
         )
     );
@@ -69,7 +69,7 @@ function my_sidebars()
         array(
             'name' => 'Blog Sidebar',
             'id' => 'blog-sidebar',
-            'before_title' => '<h4 class="widget-title> ',
+            'before_title' => '<h4 class="widget-title"> ',
             'after_title' => '</h4>'
         )
     );
