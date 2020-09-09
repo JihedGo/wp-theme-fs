@@ -1,4 +1,6 @@
 <div id="success" class="alert alert-success" style="display: none;"></div>
+<?php //echo wp_create_nonce(); 
+?>
 <form id="enquiry">
     <h2>Send an enquiry about <?php the_title() ?></h2>
     <input type="hidden" name="registration" value="<?php the_field('registration') ?>">
@@ -41,6 +43,7 @@
             var formdata = new FormData;
             formdata.append('action', 'enquiry');
             formdata.append('enquiry', form);
+            formdata.append('nonce', '<?php echo wp_create_nonce('ajax-nonce') ?>');
             $.ajax(endpoint, {
                 type: 'POST',
                 data: formdata,
@@ -55,7 +58,7 @@
                     $('#enquiry').fadeIn(500);
                 },
                 error: function(err) {
-
+                    alert(err.responseJSON.data);
                 }
             });
         });
