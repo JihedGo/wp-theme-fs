@@ -43,7 +43,7 @@
             var formdata = new FormData;
             formdata.append('action', 'enquiry');
             formdata.append('enquiry', form);
-            formdata.append('nonce', '<?php echo wp_create_nonce('ajax-nonce') ?>');
+            /* formdata.append('nonce', '<?php echo wp_create_nonce('ajax-nonce') ?>');*/
             $.ajax(endpoint, {
                 type: 'POST',
                 data: formdata,
@@ -58,7 +58,7 @@
                     $('#enquiry').fadeIn(500);
                 },
                 error: function(err) {
-                    alert(err.responseJSON.data);
+                    // alert(err.responseJSON.data);
                 }
             });
         });

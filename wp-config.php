@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The base configuration for WordPress
  *
@@ -18,28 +19,34 @@
  * @package WordPress
  */
 
+// THIS IS FOR PHPMAILER NEEDS
+
+define('SMTP_LOGIN', 'jiji201802@gmail.com');
+define('SMTP_PASSWORD', 'jiji@tunis2020');
+
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'wordpress-theme-from-scratch' );
+define('DB_NAME', 'wordpress-theme-from-scratch');
 
 /** MySQL database username */
-define( 'DB_USER', 'root' );
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define( 'DB_PASSWORD', '' );
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
-define( 'DB_HOST', 'localhost' );
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8' );
+define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
+define('DB_COLLATE', '');
 
-if ( !defined('WP_CLI') ) {
-    define( 'WP_SITEURL', $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] );
-    define( 'WP_HOME',    $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] );
+if (!defined('WP_CLI')) {
+    define('WP_SITEURL', $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST']);
+    define('WP_HOME',    $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST']);
 }
 
 
@@ -53,14 +60,14 @@ if ( !defined('WP_CLI') ) {
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         'qiaIU1fdbRFAabPt4baYJoAUPdxORuMuMDQMPnETUd8jtpmiCI2vhpM5so0gG81G' );
-define( 'SECURE_AUTH_KEY',  'yJybWiBrJRYXjRN4byazmGS1oWHjNuZvWU8XTIO3DcHxJYkasTKKBVabSdrdrvrw' );
-define( 'LOGGED_IN_KEY',    '7prjohVGgnO1QokMKcE0cmZPM63N7DxKgXwkrdjTinnV61ELuV9XBysyDPX000xp' );
-define( 'NONCE_KEY',        'nZx9qOuY6F5lQbst9AqAz1ecau7biE6ovEP6ugsD20y2qo1e2m7zuTiqgOk3k0Vn' );
-define( 'AUTH_SALT',        'PIlirzgkadiGH5LiM2XSF2qRoA5tLFYFOM9qv1yYKGkYRBJif2jzW3y59XOTWKeu' );
-define( 'SECURE_AUTH_SALT', 'bX8ggnv36Oldfinf4fP5jpQW9gH2R6SLSrQdkV5Xuayc3wP1F0z9D6LFgOqnvcnI' );
-define( 'LOGGED_IN_SALT',   'OFYRG2kDuiW8It6Op8GAiGyJmbmM3kLnEtnEIjk3eRsAYkPNvUFYyparByDXe91B' );
-define( 'NONCE_SALT',       'tcawuj1sXsUCYT21co6spORnKeN8FLkJQ18AvCMeZUSwjTGHiwpin6fzcJrlEO28' );
+define('AUTH_KEY',         'qiaIU1fdbRFAabPt4baYJoAUPdxORuMuMDQMPnETUd8jtpmiCI2vhpM5so0gG81G');
+define('SECURE_AUTH_KEY',  'yJybWiBrJRYXjRN4byazmGS1oWHjNuZvWU8XTIO3DcHxJYkasTKKBVabSdrdrvrw');
+define('LOGGED_IN_KEY',    '7prjohVGgnO1QokMKcE0cmZPM63N7DxKgXwkrdjTinnV61ELuV9XBysyDPX000xp');
+define('NONCE_KEY',        'nZx9qOuY6F5lQbst9AqAz1ecau7biE6ovEP6ugsD20y2qo1e2m7zuTiqgOk3k0Vn');
+define('AUTH_SALT',        'PIlirzgkadiGH5LiM2XSF2qRoA5tLFYFOM9qv1yYKGkYRBJif2jzW3y59XOTWKeu');
+define('SECURE_AUTH_SALT', 'bX8ggnv36Oldfinf4fP5jpQW9gH2R6SLSrQdkV5Xuayc3wP1F0z9D6LFgOqnvcnI');
+define('LOGGED_IN_SALT',   'OFYRG2kDuiW8It6Op8GAiGyJmbmM3kLnEtnEIjk3eRsAYkPNvUFYyparByDXe91B');
+define('NONCE_SALT',       'tcawuj1sXsUCYT21co6spORnKeN8FLkJQ18AvCMeZUSwjTGHiwpin6fzcJrlEO28');
 
 /**#@-*/
 
@@ -84,13 +91,13 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', false );
+define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
-if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', __DIR__ . '/' );
+if (!defined('ABSPATH')) {
+    define('ABSPATH', __DIR__ . '/');
 }
 
 /** Sets up WordPress vars and included files. */

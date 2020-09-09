@@ -128,10 +128,10 @@ add_action('wp_ajax_enquiry', 'enquiry_form');
 add_action('wp_ajax_nopriv_enquiry', 'enquiry_form');
 function enquiry_form()
 {
-    if (!wp_verify_nonce($_POST['nonce'], 'ajax_nonce')) {
+    /*if (!wp_verify_nonce($_POST['nonce'], 'ajax_nonce')) {
         wp_send_json_error('Nonce is incorrect', 401);
         die();
-    }
+    }*/
     //$data = json_encode($_POST);
     $formdata = [];
     // convert serialse to array php
@@ -176,3 +176,18 @@ function register_navwalker()
     require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 }
 add_action('after_setup_theme', 'register_navwalker');
+
+
+// for mailer
+add_action('phpmailer_init', 'custom_mailer');
+function custom_mailer(PHPMailer $phpmailer/*inject the instance*/)
+{
+    $phpmailer->SetFrom('jihed.gouay@gmail.com', 'JIHED GOUAY');
+    $phpmailer->Host = 'smtp.gmail.com';
+    $phpmailer->Port = 587;
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->SMTPSecure = 'tls';
+    $phpmailer->Username = SMTP_LOGIN; // global variable without dollar sign
+    $phpmailer->Password = SMTP_PASSWORD;
+    $phpmailer->IsSMTP();
+}
