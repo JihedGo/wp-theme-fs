@@ -27,3 +27,6 @@ function my_first_post_type(){
 add_action('init','my_first_post_type');
 
 custom fields:
+The Best Form Plugin for WordPress:
+gravityforms is the best choice for forms
+Custom AJAX Form

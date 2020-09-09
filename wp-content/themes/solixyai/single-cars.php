@@ -32,6 +32,8 @@ get_header(); // function automatically know to grab a file header.php
                 <?php wp_link_pages(); ?>
             </div>
             <div class="col-lg-6">
+
+                <?php get_template_part('includes/form', 'enquiry'); ?>
                 <ul>
                     <?php
                     /*<li>Color : <?php echo get_post_meta($post->ID, 'Color', true/*string ) </li>
