@@ -1,0 +1,10 @@
+Search Functionality
+copy the same code of page.php in search.php
+and go to front-page.php and implement this snippet code:
+ <?php get_search_form(); ?> this will appear a search form 
+ and create new file to searchform.php to design our custom search form 
+ and don"t forget in input value to include <?php the_search_query(); ?>
+ and in the search will be the result of the search we can get the keyword with:
+ <?php the_search_query(); ?> in search.php
+
+search everything => 
