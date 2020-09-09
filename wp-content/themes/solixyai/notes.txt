@@ -25,3 +25,5 @@ function my_first_post_type(){
     register_post_type('cars', $args);
 }
 add_action('init','my_first_post_type');
+
+custom fields:

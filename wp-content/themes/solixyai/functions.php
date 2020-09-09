@@ -9,6 +9,12 @@ function load_css()
     // 2) enqueue
     wp_enqueue_style('bootstrap');
 
+    // magnific popup
+    // 1) register    
+    wp_register_style('magnificpopup', get_template_directory_uri() . '/css/magnific-popup.css', [/* list of dependencies ( another stylesheets ) */],/*the version */ false,/*media */ 'all');
+    // 2) enqueue
+    wp_enqueue_style('magnificpopup');
+
     // to main.css
 
     // 1) register    
@@ -28,6 +34,10 @@ function load_js()
     wp_enqueue_script('jquery');
     wp_register_script('bootstrapjs', get_template_directory_uri() . '/js/bootstrap.min.js', 'jquery', false, /* if in footer: true then false for the header*/ true);
     wp_enqueue_script('bootstrapjs');
+    wp_register_script('magnificjs', get_template_directory_uri() . '/js/jquery.magnific-popup.min.js', 'jquery', false, /* if in footer: true then false for the header*/ true);
+    wp_enqueue_script('magnificjs');
+    wp_register_script('customjs', get_template_directory_uri() . '/js/custom.js', 'jquery', false, /* if in footer: true then false for the header*/ true);
+    wp_enqueue_script('customjs');
 }
 
 add_action('wp_enqueue_scripts', 'load_js');
@@ -88,7 +98,7 @@ function my_first_post_type()
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-images-alt2',
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
         //'rewrite'=>array('slug'=>'cars'),
     );
     register_post_type('cars', $args);
