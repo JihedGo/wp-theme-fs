@@ -1,4 +1,4 @@
-<div id="success" class="alert alert-success" style="display: none;"></div>
+<div id="success_message" class="alert alert-success" style="display: none;"></div>
 <?php //echo wp_create_nonce(); 
 ?>
 <form id="enquiry">
@@ -33,34 +33,31 @@
 
         $('#enquiry').submit(function(event) {
 
-
-
-            event.preventDefault(); // stop the form from submitting
+            event.preventDefault();
             var endpoint = '<?php echo admin_url('admin-ajax.php') ?>';
-            //alert(endpoint);
             var form = $('#enquiry').serialize();
-            //console.log(form);
-            var formdata = new FormData;
-            formdata.append('action', 'enquiry');
-            formdata.append('enquiry', form);
-            /* formdata.append('nonce', '<?php echo wp_create_nonce('ajax-nonce') ?>');*/
+            //console.log('form serialised ' + form);
+            var formData = new FormData();
+            formData.append('action', 'enquiry');
+            formData.append('enquiry', form);
             $.ajax(endpoint, {
                 type: 'POST',
-                data: formdata,
-                processData: false, // turn ajax action
-                contentType: false, // default: application/xx-form
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function(res) {
-                    // console.log(res.data);
-                    $('#enquiry').fadeOut(2000);
-                    $('#success').text('Thanks for your enquiry').show();
-
+                    $('#enquiry').fadeOut(500);
+                    $('#success_message').text('Thanks for your enquiry !').show();
                     $('#enquiry').trigger('reset');
-                    $('#enquiry').fadeIn(500);
+                    $('#enquiry').fadeIn(200);
+
                 },
                 error: function(err) {
-                    // alert(err.responseJSON.data);
+
                 }
-            });
+
+            })
+
         });
     })(jQuery)
 </script>

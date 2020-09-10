@@ -123,47 +123,46 @@ function my_first_taxonomy()
 add_action('init', 'my_first_taxonomy');
 
 
-// 
+// for handling ajax post
 add_action('wp_ajax_enquiry', 'enquiry_form');
 add_action('wp_ajax_nopriv_enquiry', 'enquiry_form');
 function enquiry_form()
 {
-    /*if (!wp_verify_nonce($_POST['nonce'], 'ajax_nonce')) {
-        wp_send_json_error('Nonce is incorrect', 401);
-        die();
-    }*/
+    $form_data = [];
+
+    //convert the serialise to array php
+    wp_parse_str($_POST['enquiry'], $form_data);
+    // grub the hosting data
     //$data = json_encode($_POST);
-    $formdata = [];
-    // convert serialse to array php
-    wp_parse_str($_POST['enquiry'], $formdata);
-    // Admin email
     $admin_email = get_option('admin_email');
-    // email headers
-    $headers[] = 'Content-Type: text/html; charset=UTF-8';
-    $headers[] = 'From: My Website <' . $admin_email . '>';
-    $headers[] = 'Reply-to: ' . $formdata['email'];
-    //$headers[] = 'BCC: ' . $formdata['email'];
-    // who are we sending an email to
+
+    // Email headers
+    $headers[] = 'Content-Type: text/html;charset=UTF-8';
+    $headers[] = 'From: My WebSite <' . $admin_email . '>';
+    $headers[] = 'Reply-to: ' . $form_data['email'];
+    //$headers[] = 'BCC: ' . $form_data['email'];
+    // who are we sending the email to?
     $send_to = $admin_email;
-    // subject
-    $subject = 'Enquiry from ' . $formdata['fname'] . ' ' . $formdata['lname'];
+
+    // subjet
+    $subject = "Enquiry Form " . $form_data['fname'] . ' ' . $form_data['lname'];
     // Message
     $message = '';
-
-    foreach ($formdata as $index => $field) {
-        $message .= '<strong>' . $index . '</strong>' . $field . '<br/>';
+    foreach ($form_data as $index => $field) {
+        $message .= '<strong>' . $index . '</strong>: ' . $field . '<br/>';
     }
+
     try {
         if (wp_mail($send_to, $subject, $message, $headers)) {
-            wp_send_json_success('Email send');
+            wp_send_json_success('Email sent !');
         } else {
-            wp_send_json_error('Email error');
+            wp_send_json_error('Email Error !');
         }
     } catch (Exception $e) {
         wp_send_json_error($e->getMessage());
     }
 
-    wp_send_json_success($formdata['fname']);
+    wp_send_json_success($form_data['fname']);
 }
 
 //
@@ -176,18 +175,3 @@ function register_navwalker()
     require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 }
 add_action('after_setup_theme', 'register_navwalker');
-
-
-// for mailer
-add_action('phpmailer_init', 'custom_mailer');
-function custom_mailer(PHPMailer $phpmailer/*inject the instance*/)
-{
-    $phpmailer->SetFrom('jihed.gouay@gmail.com', 'JIHED GOUAY');
-    $phpmailer->Host = 'smtp.gmail.com';
-    $phpmailer->Port = 587;
-    $phpmailer->SMTPAuth = true;
-    $phpmailer->SMTPSecure = 'tls';
-    $phpmailer->Username = SMTP_LOGIN; // global variable without dollar sign
-    $phpmailer->Password = SMTP_PASSWORD;
-    $phpmailer->IsSMTP();
-}
