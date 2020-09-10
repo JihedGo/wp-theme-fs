@@ -30,3 +30,4 @@ custom fields:
 The Best Form Plugin for WordPress:
 gravityforms is the best choice for forms
 Custom AJAX Form
+Security for your ajax form:
