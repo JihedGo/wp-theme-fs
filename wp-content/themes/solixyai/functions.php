@@ -180,3 +180,18 @@ function register_navwalker()
     require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 }
 add_action('after_setup_theme', 'register_navwalker');
+
+
+/*add_action('phpmailer_init', 'custom_mailer');
+function custom_mailer(PHPMailer $phpmailer)
+{
+    $phpmailer->setFrom('jihed.gouay@gmail.com', 'Goui Jihed');
+    $phpmailer->Host = 'smtp.gmail.com';
+    $phpmailer->Port = 587;
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->SMTPSecure = 'tls';
+    $phpmailer->Username = 'jiji201802@gmail.com';
+    $phpmailer->Password = 'jiji@tunis2020';
+    $phpmailer->IsSMTP();
+}
+*/
